@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/welcome_nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.perronjones.daggersampler.ui.welcome.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_farewellActivity"
+            app:destination="@id/farewellActivity" >
+        </action>
+        <action
+            android:id="@+id/action_welcomeFragment_to_greetingActivity"
+            app:destination="@id/greetingActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/greetingActivity"
+        android:name="com.perronjones.daggersampler.ui.greeting.GreetingActivity"
+        android:label="GreetingActivity" />
+    <activity
+        android:id="@+id/farewellActivity"
+        android:name="com.perronjones.daggersampler.ui.farewell.FarewellActivity"
+        android:label="FarewellActivity" />
+</navigation>

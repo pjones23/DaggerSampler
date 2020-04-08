@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/greeting_nav_graph"
+    app:startDestination="@id/greetingFragment">
+
+    <fragment
+        android:id="@+id/spanishGreetingFragment"
+        android:name="com.perronjones.daggersampler.ui.greeting.SpanishGreetingFragment"
+        android:label="SpanishGreetingFragment" />
+
+    <fragment
+        android:id="@+id/frenchGreetingFragment"
+        android:name="com.perronjones.daggersampler.ui.greeting.FrenchGreetingFragment"
+        android:label="FrenchGreetingFragment" />
+    <fragment
+        android:id="@+id/greetingFragment"
+        android:name="com.perronjones.daggersampler.ui.greeting.GreetingFragment"
+        android:label="GreetingFragment" >
+        <action
+            android:id="@+id/action_greetingFragment_to_frenchGreetingFragment"
+            app:destination="@id/frenchGreetingFragment" />
+        <action
+            android:id="@+id/action_greetingFragment_to_spanishGreetingFragment"
+            app:destination="@id/spanishGreetingFragment" />
+    </fragment>
+
+</navigation>

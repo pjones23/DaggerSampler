@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/farewell_nav_graph"
+    app:startDestination="@id/farewellFragment">
+
+    <fragment
+        android:id="@+id/farewellFragment"
+        android:name="com.perronjones.daggersampler.ui.farewell.FarewellFragment"
+        android:label="FarewellFragment" >
+        <action
+            android:id="@+id/action_farewellFragment_to_frenchFarewellFragment"
+            app:destination="@id/frenchFarewellFragment" />
+        <action
+            android:id="@+id/action_farewellFragment_to_spanishFarewellFragment"
+            app:destination="@id/spanishFarewellFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/frenchFarewellFragment"
+        android:name="com.perronjones.daggersampler.ui.farewell.FrenchFarewellFragment"
+        android:label="FrenchFarewellFragment" />
+    <fragment
+        android:id="@+id/spanishFarewellFragment"
+        android:name="com.perronjones.daggersampler.ui.farewell.SpanishFarewellFragment"
+        android:label="SpanishFarewellFragment" />
+</navigation>

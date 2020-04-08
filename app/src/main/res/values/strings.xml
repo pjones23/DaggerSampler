@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DaggerSampler</string>
+    <string name="french">French</string>
+    <string name="spanish">Spanish</string>
+</resources>
