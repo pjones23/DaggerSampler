@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
+import com.perronjones.daggersampler.di.ComponentProvider
+import com.perronjones.daggersampler.di.greeting.GreetingComponent
 
 class GreetingActivity : AppCompatActivity() {
 
@@ -11,7 +13,9 @@ class GreetingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val appContext = DaggerSamplerApp.getAppContext()
         val greetingComponent = appContext.appComponent!!.getGreetingComponentFactory().create()
-        appContext.setGreetingComponent(greetingComponent)
+        appContext.setGreetingComponent(object : ComponentProvider<GreetingComponent> {
+            override fun provideComponent(): GreetingComponent? = greetingComponent
+        })
         setContentView(R.layout.greeting_activity)
     }
 

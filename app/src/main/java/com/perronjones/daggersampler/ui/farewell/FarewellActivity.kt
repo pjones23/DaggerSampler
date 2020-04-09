@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
+import com.perronjones.daggersampler.di.ComponentProvider
 import com.perronjones.daggersampler.di.DEFINITION
+import com.perronjones.daggersampler.di.farewell.FarewellComponent
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -17,7 +19,9 @@ class FarewellActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val appContext = DaggerSamplerApp.getAppContext()
         val farewellComponent = appContext.appComponent!!.getFarewellComponentFactory().create()
-        appContext.setFarewellComponent(farewellComponent)
+        appContext.setFarewellComponent(object : ComponentProvider<FarewellComponent> {
+            override fun provideComponent(): FarewellComponent? = farewellComponent
+        })
         setContentView(R.layout.farewell_activity)
     }
 

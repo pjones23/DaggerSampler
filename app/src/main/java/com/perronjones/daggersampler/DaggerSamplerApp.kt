@@ -2,6 +2,7 @@ package com.perronjones.daggersampler
 
 import android.app.Application
 import com.perronjones.daggersampler.di.AppComponent
+import com.perronjones.daggersampler.di.ComponentProvider
 import com.perronjones.daggersampler.di.DaggerAppComponent
 import com.perronjones.daggersampler.di.farewell.FarewellComponent
 import com.perronjones.daggersampler.di.greeting.GreetingComponent
@@ -13,9 +14,9 @@ class DaggerSamplerApp: Application() {
     var appComponent: AppComponent? = null
         private set
 
-    private var welcomeComponent: WeakReference<WelcomeComponent>? = null
-    private var farewellComponent: WeakReference<FarewellComponent>? = null
-    private var greetingComponent: WeakReference<GreetingComponent>? = null
+    private var welcomeComponent: ComponentProvider<WelcomeComponent>? = null
+    private var farewellComponent: ComponentProvider<FarewellComponent>? = null
+    private var greetingComponent: ComponentProvider<GreetingComponent>? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -23,34 +24,22 @@ class DaggerSamplerApp: Application() {
         appComponent = DaggerAppComponent.builder().build()
     }
 
-    fun getWelcomeComponent(): WelcomeComponent? = welcomeComponent?.get()
+    fun getWelcomeComponent(): WelcomeComponent? = welcomeComponent?.provideComponent()
 
-    fun setWelcomeComponent(component: WelcomeComponent?) {
-        if (null != component) {
-            welcomeComponent = WeakReference<WelcomeComponent>(component)
-        } else {
-            welcomeComponent?.clear()
-        }
+    fun setWelcomeComponent(componentProvider: ComponentProvider<WelcomeComponent>?) {
+        welcomeComponent = componentProvider
     }
 
-    fun getFarewellComponent(): FarewellComponent? = farewellComponent?.get()
+    fun getFarewellComponent(): FarewellComponent? = farewellComponent?.provideComponent()
 
-    fun setFarewellComponent(component: FarewellComponent?) {
-        if (null != component) {
-            farewellComponent = WeakReference<FarewellComponent>(component)
-        } else {
-            farewellComponent?.clear()
-        }
+    fun setFarewellComponent(componentProvider: ComponentProvider<FarewellComponent>?) {
+        farewellComponent = componentProvider
     }
 
-    fun getGreetingComponent(): GreetingComponent? = greetingComponent?.get()
+    fun getGreetingComponent(): GreetingComponent? = greetingComponent?.provideComponent()
 
-    fun setGreetingComponent(component: GreetingComponent?) {
-        if (null != component) {
-            greetingComponent = WeakReference<GreetingComponent>(component)
-        } else {
-            greetingComponent?.clear()
-        }
+    fun setGreetingComponent(componentProvider: ComponentProvider<GreetingComponent>?) {
+        greetingComponent = componentProvider
     }
 
     companion object {
