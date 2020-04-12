@@ -21,6 +21,7 @@ class DaggerSamplerApp: Application() {
         super.onCreate()
         instance = this
         appComponent = DaggerAppComponent.builder().build()
+        DaggerSamplerAppHelper().initializeComponents(this, appComponent)
     }
 
     fun getWelcomeComponent(): WelcomeComponent? = welcomeComponent?.provideComponent()
