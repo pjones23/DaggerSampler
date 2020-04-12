@@ -8,6 +8,17 @@
     tools:context=".ui.greeting.FrenchGreetingFragment">
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/messageHeadingTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"/>
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/messageTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,6 +26,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/messageHeadingTxt"
+        app:layout_constraintVertical_bias="0.3"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/message_app_message_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/messageTxt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

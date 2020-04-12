@@ -10,23 +10,21 @@ import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
 import com.perronjones.daggersampler.di.SPANISH
 import com.perronjones.daggersampler.info.InfoProvider
+import com.perronjones.daggersampler.ui.MessageFragment
 import javax.inject.Inject
 import javax.inject.Named
 
-class SpanishGreetingFragment : Fragment() {
+class SpanishGreetingFragment : MessageFragment() {
 
     @field:[Inject Named(SPANISH)]
-    lateinit var infoProvider: InfoProvider
+    lateinit var messageInfoProvider: InfoProvider
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.message_fragment, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        view.findViewById<MaterialTextView>(R.id.messageTxt).text = infoProvider.provideInfo()
-    }
+    override fun getMessageText(): String = messageInfoProvider.provideInfo()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

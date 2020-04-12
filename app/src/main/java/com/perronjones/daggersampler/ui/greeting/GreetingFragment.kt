@@ -5,42 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.card.MaterialCardView
-import com.google.android.material.textview.MaterialTextView
 import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
+import com.perronjones.daggersampler.di.APP
 import com.perronjones.daggersampler.di.DEFINITION
 import com.perronjones.daggersampler.info.InfoProvider
+import com.perronjones.daggersampler.ui.TwoCardFragment
 import javax.inject.Inject
 import javax.inject.Named
 
-class GreetingFragment: Fragment(), View.OnClickListener {
+class GreetingFragment: TwoCardFragment() {
 
     @field:[Inject Named(DEFINITION)]
     lateinit var infoProvider: InfoProvider
+
+    @field:[Inject Named(APP)]
+    lateinit var appMessageTxtInfoProvider: InfoProvider
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.two_card_layout, container, false)
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        view.findViewById<MaterialTextView>(R.id.description).text = infoProvider.provideInfo()
-        val frenchGreetingCardView = view.findViewById<MaterialCardView>(R.id.card_one)
-        frenchGreetingCardView.isClickable = true
-        frenchGreetingCardView.setOnClickListener(this)
-        val frenchGreetingTitle = view.findViewById<MaterialTextView>(R.id.card_one_title)
-        frenchGreetingTitle.text = getText(R.string.french)
-        val spanishGreetingCardView = view.findViewById<MaterialCardView>(R.id.card_two)
-        spanishGreetingCardView.isClickable = true
-        spanishGreetingCardView.setOnClickListener(this)
-        val spanishGreetingTitle = view.findViewById<MaterialTextView>(R.id.card_two_title)
-        spanishGreetingTitle.text = getText(R.string.spanish)
-
+    override fun createView(view: View) {
+        createView(view, getText(R.string.french).toString(), getText(R.string.spanish).toString(),
+            this, infoProvider.provideInfo(), appMessageTxtInfoProvider.provideInfo())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,14 +50,7 @@ class GreetingFragment: Fragment(), View.OnClickListener {
         callback.isEnabled = true
     }
 
-    override fun onClick(v: View?) {
-        when(v?.id) {
-            R.id.card_one -> {
-                findNavController().navigate(GreetingFragmentDirections.actionGreetingFragmentToFrenchGreetingFragment())
-            }
-            R.id.card_two -> {
-                findNavController().navigate(GreetingFragmentDirections.actionGreetingFragmentToSpanishGreetingFragment())
-            }
-        }
-    }
+    override fun getCardOneDirections(): NavDirections = GreetingFragmentDirections.actionGreetingFragmentToFrenchGreetingFragment()
+
+    override fun getCardTwoDirections(): NavDirections = GreetingFragmentDirections.actionGreetingFragmentToSpanishGreetingFragment()
 }

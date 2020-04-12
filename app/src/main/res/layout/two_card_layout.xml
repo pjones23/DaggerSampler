@@ -95,5 +95,19 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/two_card_app_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_two"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.9"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
