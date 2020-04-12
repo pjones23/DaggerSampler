@@ -12,6 +12,7 @@
         android:id="@+id/frenchGreetingFragment"
         android:name="com.perronjones.daggersampler.ui.greeting.FrenchGreetingFragment"
         android:label="FrenchGreetingFragment" />
+
     <fragment
         android:id="@+id/greetingFragment"
         android:name="com.perronjones.daggersampler.ui.greeting.GreetingFragment"
@@ -22,6 +23,13 @@
         <action
             android:id="@+id/action_greetingFragment_to_spanishGreetingFragment"
             app:destination="@id/spanishGreetingFragment" />
+        <action
+            android:id="@+id/action_greetingFragment_to_welcomeActivity"
+            app:destination="@id/welcomeActivity" />
     </fragment>
+
+    <activity
+        android:id="@+id/welcomeActivity"
+        android:name="com.perronjones.daggersampler.ui.welcome.WelcomeActivity" />
 
 </navigation>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.card.MaterialCardView
@@ -46,6 +47,16 @@ class GreetingFragment: Fragment(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         val greetingComponent = DaggerSamplerApp.getAppContext().getGreetingComponent()
         greetingComponent?.inject(this)
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            /*
+            navigating to the WelcomeActivity activity since it was finished due to the WelcomeComponent being cleaned up for
+            memory demonstrations purposes.
+             */
+            findNavController().navigate(GreetingFragmentDirections.actionGreetingFragmentToWelcomeActivity())
+            // Finishing here, to mimic would would have happened if the onBackPressed behavior was not overwritten
+            activity?.finish()
+        }
+        callback.isEnabled = true
     }
 
     override fun onClick(v: View?) {

@@ -3,7 +3,6 @@ package com.perronjones.daggersampler.di.welcome
 import com.perronjones.daggersampler.di.DEFINITION
 import com.perronjones.daggersampler.di.FAREWELL
 import com.perronjones.daggersampler.di.GREETING
-import com.perronjones.daggersampler.di.WelcomeScope
 import com.perronjones.daggersampler.info.InfoProvider
 import com.perronjones.daggersampler.info.welcome.FarewellWelcomeTitleInfoProvider
 import com.perronjones.daggersampler.info.welcome.GreetingWelcomeTitleInfoProvider
@@ -14,7 +13,6 @@ import javax.inject.Named
 
 @Module
 class WelcomeModule {
-    @WelcomeScope
     @Provides
     @Named(DEFINITION)
     fun provideWelcomeDefinition(): InfoProvider = WelcomeDefinitionInfoProvider()

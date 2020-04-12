@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.card.MaterialCardView
@@ -63,5 +64,10 @@ class WelcomeFragment : Fragment(), View.OnClickListener {
                 findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToFarewellActivity())
             }
         }
+        /*
+        finishing activity so the onDestroy of the Welcome activity triggers and WelcomeComponent is cleaned up for
+        memory demonstrations purposes
+         */
+        activity?.finish()
     }
 }
