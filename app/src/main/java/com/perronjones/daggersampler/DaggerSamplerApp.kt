@@ -7,11 +7,10 @@ import com.perronjones.daggersampler.di.DaggerAppComponent
 import com.perronjones.daggersampler.di.farewell.FarewellComponent
 import com.perronjones.daggersampler.di.greeting.GreetingComponent
 import com.perronjones.daggersampler.di.welcome.WelcomeComponent
-import java.lang.ref.WeakReference
 
 class DaggerSamplerApp: Application() {
 
-    var appComponent: AppComponent? = null
+    lateinit var appComponent: AppComponent
         private set
 
     private var welcomeComponent: ComponentProvider<WelcomeComponent>? = null

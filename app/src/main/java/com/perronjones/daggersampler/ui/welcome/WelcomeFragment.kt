@@ -41,8 +41,7 @@ class WelcomeFragment : TwoCardFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val welcomeComponent = DaggerSamplerApp.getAppContext().getWelcomeComponent()
-        welcomeComponent?.inject(this)
+        WelcomeHelper().injectDependencies(DaggerSamplerApp.getAppContext(), this)
     }
 
     override fun onClick(v: View?) {

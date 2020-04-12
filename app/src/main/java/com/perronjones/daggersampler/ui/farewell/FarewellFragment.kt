@@ -35,8 +35,7 @@ class FarewellFragment: TwoCardFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val farewellComponent = DaggerSamplerApp.getAppContext().getFarewellComponent()
-        farewellComponent?.inject(this)
+        FarewellHelper().injectDependencies(DaggerSamplerApp.getAppContext(), this)
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
             /*
             navigating to the WelcomeActivity activity since it was finished due to the WelcomeComponent being cleaned up for

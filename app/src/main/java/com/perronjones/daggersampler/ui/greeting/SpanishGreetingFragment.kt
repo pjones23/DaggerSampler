@@ -28,7 +28,6 @@ class SpanishGreetingFragment : MessageFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val greetingComponent = DaggerSamplerApp.getAppContext().getGreetingComponent()
-        greetingComponent?.inject(this)
+        GreetingHelper().injectDependencies(DaggerSamplerApp.getAppContext(), this)
     }
 }

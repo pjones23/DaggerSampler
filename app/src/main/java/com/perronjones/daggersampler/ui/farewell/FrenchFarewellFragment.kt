@@ -28,7 +28,6 @@ class FrenchFarewellFragment: MessageFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val farewellComponent = DaggerSamplerApp.getAppContext().getFarewellComponent()
-        farewellComponent?.inject(this)
+        FarewellHelper().injectDependencies(DaggerSamplerApp.getAppContext(), this)
     }
 }

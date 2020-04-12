@@ -9,7 +9,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
-
     fun getWelcomeComponentFactory(): WelcomeComponent.Factory
     fun getGreetingComponentFactory(): GreetingComponent.Factory
     fun getFarewellComponentFactory(): FarewellComponent.Factory

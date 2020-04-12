@@ -25,6 +25,22 @@ android {
         }
     }
 
+    flavorDimensions "component"
+    productFlavors {
+        subComponent {
+            applicationIdSuffix ".subcomponent"
+            versionNameSuffix "-subcomponent"
+        }
+        oneComponent {
+            applicationIdSuffix ".onecomponent"
+            versionNameSuffix "-onecomponent"
+        }
+        multipleComponent {
+            applicationIdSuffix ".multiplecomponent"
+            versionNameSuffix "-multiplecomponent"
+        }
+    }
+
     dataBinding {
         enabled = true
     }
