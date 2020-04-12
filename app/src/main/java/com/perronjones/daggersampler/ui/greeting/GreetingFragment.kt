@@ -9,20 +9,18 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
-import com.perronjones.daggersampler.di.APP
-import com.perronjones.daggersampler.di.DEFINITION
-import com.perronjones.daggersampler.info.InfoProvider
+import com.perronjones.daggersampler.info.AppInfoProvider
+import com.perronjones.daggersampler.info.greeting.GreetingDefinitionInfoProvider
 import com.perronjones.daggersampler.ui.TwoCardFragment
 import javax.inject.Inject
-import javax.inject.Named
 
 class GreetingFragment: TwoCardFragment() {
 
-    @field:[Inject Named(DEFINITION)]
-    lateinit var infoProvider: InfoProvider
+    @Inject
+    lateinit var infoProvider: GreetingDefinitionInfoProvider
 
-    @field:[Inject Named(APP)]
-    lateinit var appMessageTxtInfoProvider: InfoProvider
+    @Inject
+    lateinit var appMessageTxtInfoProvider: AppInfoProvider
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {

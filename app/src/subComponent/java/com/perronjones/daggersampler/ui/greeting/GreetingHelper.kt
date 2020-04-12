@@ -4,27 +4,27 @@ import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.di.ComponentProvider
 import com.perronjones.daggersampler.di.greeting.GreetingComponent
 
-class GreetingHelper {
-    fun setComponent(appContext: DaggerSamplerApp) {
+class GreetingHelper(private val appContext: DaggerSamplerApp) {
+    fun setComponent() {
         val greetingComponent = appContext.appComponent.getGreetingComponentFactory().create()
         appContext.setGreetingComponent(object : ComponentProvider<GreetingComponent> {
             override fun provideComponent(): GreetingComponent? = greetingComponent
         })
     }
 
-    fun unsetComponent(appContext: DaggerSamplerApp) {
+    fun unsetComponent() {
         appContext.setGreetingComponent(null)
     }
 
-    fun injectDependencies(appContext: DaggerSamplerApp, greetingFragment: GreetingFragment) {
+    fun injectDependencies(greetingFragment: GreetingFragment) {
         appContext.getGreetingComponent()?.inject(greetingFragment)
     }
 
-    fun injectDependencies(appContext: DaggerSamplerApp, frenchGreetingFragment: FrenchGreetingFragment) {
+    fun injectDependencies(frenchGreetingFragment: FrenchGreetingFragment) {
         appContext.getGreetingComponent()?.inject(frenchGreetingFragment)
     }
 
-    fun injectDependencies(appContext: DaggerSamplerApp, spanishGreetingFragment: SpanishGreetingFragment) {
+    fun injectDependencies(spanishGreetingFragment: SpanishGreetingFragment) {
         appContext.getGreetingComponent()?.inject(spanishGreetingFragment)
     }
 }

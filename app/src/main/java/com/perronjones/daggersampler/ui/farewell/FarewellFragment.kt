@@ -9,20 +9,17 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
-import com.perronjones.daggersampler.di.APP
-import com.perronjones.daggersampler.di.DEFINITION
-import com.perronjones.daggersampler.info.InfoProvider
+import com.perronjones.daggersampler.info.AppInfoProvider
 import com.perronjones.daggersampler.info.farewell.FarewellDefinitionInfoProvider
 import com.perronjones.daggersampler.ui.TwoCardFragment
 import javax.inject.Inject
-import javax.inject.Named
 
 class FarewellFragment: TwoCardFragment() {
-    @field:[Inject Named(DEFINITION)]
+    @Inject
     lateinit var infoProvider: FarewellDefinitionInfoProvider
 
-    @field:[Inject Named(APP)]
-    lateinit var appMessageTxtInfoProvider: InfoProvider
+    @Inject
+    lateinit var appMessageTxtInfoProvider: AppInfoProvider
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {

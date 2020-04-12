@@ -7,27 +7,26 @@ import android.view.ViewGroup
 import androidx.navigation.NavDirections
 import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
-import com.perronjones.daggersampler.di.APP
-import com.perronjones.daggersampler.di.DEFINITION
-import com.perronjones.daggersampler.di.FAREWELL
-import com.perronjones.daggersampler.di.GREETING
-import com.perronjones.daggersampler.info.InfoProvider
+import com.perronjones.daggersampler.info.AppInfoProvider
+import com.perronjones.daggersampler.info.welcome.FarewellWelcomeTitleInfoProvider
+import com.perronjones.daggersampler.info.welcome.GreetingWelcomeTitleInfoProvider
+import com.perronjones.daggersampler.info.welcome.WelcomeDefinitionInfoProvider
 import com.perronjones.daggersampler.ui.TwoCardFragment
 import javax.inject.Inject
-import javax.inject.Named
 
 class WelcomeFragment : TwoCardFragment() {
-    @field:[Inject Named(DEFINITION)]
-    lateinit var definitionInfoProvider: InfoProvider
 
-    @field:[Inject Named(FAREWELL)]
-    lateinit var farewellTitleTxtInfoProvider: InfoProvider
+    @Inject
+    lateinit var definitionInfoProvider: WelcomeDefinitionInfoProvider
 
-    @field:[Inject Named(GREETING)]
-    lateinit var greetingTitleTxtInfoProvider: InfoProvider
+    @Inject
+    lateinit var farewellTitleTxtInfoProvider: FarewellWelcomeTitleInfoProvider
 
-    @field:[Inject Named(APP)]
-    lateinit var appMessageTxtInfoProvider: InfoProvider
+    @Inject
+    lateinit var greetingTitleTxtInfoProvider: GreetingWelcomeTitleInfoProvider
+
+    @Inject
+    lateinit var appMessageTxtInfoProvider: AppInfoProvider
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {

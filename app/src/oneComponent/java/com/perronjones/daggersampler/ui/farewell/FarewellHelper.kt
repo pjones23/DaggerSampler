@@ -1,34 +1,8 @@
 package com.perronjones.daggersampler.ui.farewell
 
 import com.perronjones.daggersampler.DaggerSamplerApp
-import com.perronjones.daggersampler.di.APP
-import com.perronjones.daggersampler.di.DEFINITION
-import com.perronjones.daggersampler.di.FRENCH
-import com.perronjones.daggersampler.di.SPANISH
-import com.perronjones.daggersampler.info.InfoProvider
-import com.perronjones.daggersampler.info.farewell.FarewellDefinitionInfoProvider
-import com.perronjones.daggersampler.info.farewell.FrenchFarewellInfoProvider
-import com.perronjones.daggersampler.info.farewell.SpanishFarewellInfoProvider
-import javax.inject.Inject
-import javax.inject.Named
 
-class FarewellHelper(appContext: DaggerSamplerApp) {
-
-    init {
-        appContext.appComponent.inject(this)
-    }
-
-    @field:[Inject Named(DEFINITION)]
-    lateinit var farewellDefinitionInfoProvider: FarewellDefinitionInfoProvider
-
-    @field:[Inject Named(APP)]
-    lateinit var appMessageTxtInfoProvider: InfoProvider
-
-    @field:[Inject Named(FRENCH)]
-    lateinit var frenchFarewellInfoProvider: FrenchFarewellInfoProvider
-
-    @field:[Inject Named(SPANISH)]
-    lateinit var spanishFarewellInfoProvider: SpanishFarewellInfoProvider
+class FarewellHelper(private val appContext: DaggerSamplerApp) {
 
     fun setComponent() {
         /*
@@ -45,19 +19,14 @@ class FarewellHelper(appContext: DaggerSamplerApp) {
     }
 
     fun injectDependencies(farewellFragment: FarewellFragment) {
-        farewellFragment.infoProvider = farewellDefinitionInfoProvider
-        farewellFragment.appMessageTxtInfoProvider = appMessageTxtInfoProvider
+        appContext.appComponent.inject(farewellFragment)
     }
 
     fun injectDependencies(frenchFarewellFragment: FrenchFarewellFragment) {
-        frenchFarewellFragment.messageInfoProvider = frenchFarewellInfoProvider
-        frenchFarewellFragment.definitionInfoProvider = farewellDefinitionInfoProvider
-        frenchFarewellFragment.appMessageTxtInfoProvider = appMessageTxtInfoProvider
+        appContext.appComponent.inject(frenchFarewellFragment)
     }
 
     fun injectDependencies(spanishFarewellFragment: SpanishFarewellFragment) {
-        spanishFarewellFragment.messageInfoProvider = spanishFarewellInfoProvider
-        spanishFarewellFragment.definitionInfoProvider = farewellDefinitionInfoProvider
-        spanishFarewellFragment.appMessageTxtInfoProvider = appMessageTxtInfoProvider
+        appContext.appComponent.inject(spanishFarewellFragment)
     }
 }

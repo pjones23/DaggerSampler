@@ -4,19 +4,19 @@ import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.di.ComponentProvider
 import com.perronjones.daggersampler.di.welcome.WelcomeComponent
 
-class WelcomeHelper {
-    fun setComponent(appContext: DaggerSamplerApp) {
+class WelcomeHelper(private val appContext: DaggerSamplerApp) {
+    fun setComponent() {
         val welcomeComponent = appContext.appComponent.getWelcomeComponentFactory().create()
         appContext.setWelcomeComponent(object : ComponentProvider<WelcomeComponent> {
             override fun provideComponent(): WelcomeComponent? = welcomeComponent
         })
     }
 
-    fun unsetComponent(appContext: DaggerSamplerApp) {
+    fun unsetComponent() {
         appContext.setWelcomeComponent(null)
     }
 
-    fun injectDependencies(appContext: DaggerSamplerApp, welcomeFragment: WelcomeFragment) {
+    fun injectDependencies(welcomeFragment: WelcomeFragment) {
         appContext.getWelcomeComponent()?.inject(welcomeFragment)
     }
 }

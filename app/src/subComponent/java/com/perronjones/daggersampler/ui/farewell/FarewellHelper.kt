@@ -4,28 +4,28 @@ import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.di.ComponentProvider
 import com.perronjones.daggersampler.di.farewell.FarewellComponent
 
-class FarewellHelper {
+class FarewellHelper(private val appContext: DaggerSamplerApp) {
 
-    fun setComponent(appContext: DaggerSamplerApp) {
+    fun setComponent() {
         val farewellComponent = appContext.appComponent.getFarewellComponentFactory().create()
         appContext.setFarewellComponent(object : ComponentProvider<FarewellComponent> {
             override fun provideComponent(): FarewellComponent? = farewellComponent
         })
     }
 
-    fun unsetComponent(appContext: DaggerSamplerApp) {
+    fun unsetComponent() {
         appContext.setFarewellComponent(null)
     }
 
-    fun injectDependencies(appContext: DaggerSamplerApp, farewellFragment: FarewellFragment) {
+    fun injectDependencies(farewellFragment: FarewellFragment) {
         appContext.getFarewellComponent()?.inject(farewellFragment)
     }
 
-    fun injectDependencies(appContext: DaggerSamplerApp, frenchFarewellFragment: FrenchFarewellFragment) {
+    fun injectDependencies(frenchFarewellFragment: FrenchFarewellFragment) {
         appContext.getFarewellComponent()?.inject(frenchFarewellFragment)
     }
 
-    fun injectDependencies(appContext: DaggerSamplerApp, spanishFarewellFragment: SpanishFarewellFragment) {
+    fun injectDependencies(spanishFarewellFragment: SpanishFarewellFragment) {
         appContext.getFarewellComponent()?.inject(spanishFarewellFragment)
     }
 }
