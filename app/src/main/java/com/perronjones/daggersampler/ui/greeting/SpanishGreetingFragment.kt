@@ -9,13 +9,14 @@ import com.google.android.material.textview.MaterialTextView
 import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
 import com.perronjones.daggersampler.di.SPANISH
+import com.perronjones.daggersampler.info.InfoProvider
 import javax.inject.Inject
 import javax.inject.Named
 
 class SpanishGreetingFragment : Fragment() {
 
     @field:[Inject Named(SPANISH)]
-    lateinit var message: String
+    lateinit var infoProvider: InfoProvider
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -24,7 +25,7 @@ class SpanishGreetingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<MaterialTextView>(R.id.messageTxt).text = message
+        view.findViewById<MaterialTextView>(R.id.messageTxt).text = infoProvider.provideInfo()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

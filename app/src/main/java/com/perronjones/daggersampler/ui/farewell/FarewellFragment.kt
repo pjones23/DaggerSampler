@@ -11,13 +11,13 @@ import com.google.android.material.textview.MaterialTextView
 import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
 import com.perronjones.daggersampler.di.DEFINITION
-import com.perronjones.daggersampler.ui.greeting.GreetingFragmentDirections
+import com.perronjones.daggersampler.info.InfoProvider
 import javax.inject.Inject
 import javax.inject.Named
 
 class FarewellFragment: Fragment(), View.OnClickListener {
     @field:[Inject Named(DEFINITION)]
-    lateinit var definition: String
+    lateinit var infoProvider: InfoProvider
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -27,7 +27,7 @@ class FarewellFragment: Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<MaterialTextView>(R.id.description).text = definition
+        view.findViewById<MaterialTextView>(R.id.description).text = infoProvider.provideInfo()
         val frenchFarewellCardView = view.findViewById<MaterialCardView>(R.id.card_one)
         frenchFarewellCardView.isClickable = true
         frenchFarewellCardView.setOnClickListener(this)
