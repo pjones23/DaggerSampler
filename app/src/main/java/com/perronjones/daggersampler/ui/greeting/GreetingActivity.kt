@@ -11,13 +11,13 @@ class GreetingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        helper = GreetingHelper()
-        helper.setComponent(DaggerSamplerApp.getAppContext())
+        helper = GreetingHelper(DaggerSamplerApp.getAppContext())
+        helper.setComponent()
         setContentView(R.layout.greeting_activity)
     }
 
     override fun onDestroy() {
-        helper.unsetComponent(DaggerSamplerApp.getAppContext())
+        helper.unsetComponent()
         super.onDestroy()
     }
 }

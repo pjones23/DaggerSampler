@@ -36,7 +36,7 @@ class GreetingFragment: TwoCardFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        GreetingHelper().injectDependencies(DaggerSamplerApp.getAppContext(), this)
+        GreetingHelper(DaggerSamplerApp.getAppContext()).injectDependencies(this)
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
             /*
             navigating to the WelcomeActivity activity since it was finished due to the WelcomeComponent being cleaned up for

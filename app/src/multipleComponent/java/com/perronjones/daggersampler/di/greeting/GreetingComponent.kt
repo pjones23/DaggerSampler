@@ -5,5 +5,5 @@ import com.perronjones.daggersampler.di.GreetingScope
 import dagger.Component
 
 @GreetingScope
-@Component(modules = [GreetingModule::class], dependencies = [AppComponent::class])
+@Component(dependencies = [AppComponent::class], modules = [GreetingModule::class])
 interface GreetingComponent: BaseGreetingComponent

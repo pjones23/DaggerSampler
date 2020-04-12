@@ -1,6 +1,6 @@
 package com.perronjones.daggersampler.info.farewell
 
-import com.perronjones.daggersampler.di.FarewellScope
+import javax.inject.Singleton
 
-@FarewellScope
+@Singleton
 class FarewellDefinitionInfoProvider : BaseFarewellDefinitionInfoProvider()

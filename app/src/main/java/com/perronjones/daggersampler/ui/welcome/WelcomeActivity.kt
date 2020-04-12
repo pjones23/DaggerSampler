@@ -11,13 +11,13 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        helper = WelcomeHelper()
-        helper.setComponent(DaggerSamplerApp.getAppContext())
+        helper = WelcomeHelper(DaggerSamplerApp.getAppContext())
+        helper.setComponent()
         setContentView(R.layout.welcome_activity)
     }
 
     override fun onDestroy() {
-        helper.unsetComponent(DaggerSamplerApp.getAppContext())
+        helper.unsetComponent()
         super.onDestroy()
     }
 }

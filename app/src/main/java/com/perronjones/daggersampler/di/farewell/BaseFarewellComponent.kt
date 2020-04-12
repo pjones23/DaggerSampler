@@ -8,6 +8,4 @@ interface BaseFarewellComponent {
     fun inject(frenchFarewellFragment: FrenchFarewellFragment)
     fun inject(spanishFarewellFragment: SpanishFarewellFragment)
     fun inject(farewellFragment: FarewellFragment)
-
-
 }

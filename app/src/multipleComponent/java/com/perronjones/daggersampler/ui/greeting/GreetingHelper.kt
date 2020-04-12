@@ -1,9 +1,6 @@
 package com.perronjones.daggersampler.ui.greeting
 
 import com.perronjones.daggersampler.DaggerSamplerApp
-import com.perronjones.daggersampler.di.ComponentProvider
-import com.perronjones.daggersampler.di.greeting.DaggerGreetingComponent
-import com.perronjones.daggersampler.di.greeting.GreetingComponent
 
 class GreetingHelper {
     fun setComponent(appContext: DaggerSamplerApp) {

@@ -1,8 +1,6 @@
 package com.perronjones.daggersampler.ui.farewell
 
 import com.perronjones.daggersampler.DaggerSamplerApp
-import com.perronjones.daggersampler.di.ComponentProvider
-import com.perronjones.daggersampler.di.farewell.FarewellComponent
 
 class FarewellHelper {
 

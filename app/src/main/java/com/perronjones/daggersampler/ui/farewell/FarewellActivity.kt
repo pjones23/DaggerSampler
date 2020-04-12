@@ -11,13 +11,13 @@ class FarewellActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        helper = FarewellHelper()
-        helper.setComponent(DaggerSamplerApp.getAppContext())
+        helper = FarewellHelper(DaggerSamplerApp.getAppContext())
+        helper.setComponent()
         setContentView(R.layout.farewell_activity)
     }
 
     override fun onDestroy() {
-        helper.unsetComponent(DaggerSamplerApp.getAppContext())
+        helper.unsetComponent()
         super.onDestroy()
     }
 }

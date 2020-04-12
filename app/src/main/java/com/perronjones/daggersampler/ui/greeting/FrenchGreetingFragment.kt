@@ -1,15 +1,11 @@
 package com.perronjones.daggersampler.ui.greeting
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.textview.MaterialTextView
 import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
-import com.perronjones.daggersampler.di.APP
-import com.perronjones.daggersampler.di.DEFINITION
 import com.perronjones.daggersampler.di.FRENCH
 import com.perronjones.daggersampler.info.InfoProvider
 import com.perronjones.daggersampler.ui.MessageFragment
@@ -30,7 +26,7 @@ class FrenchGreetingFragment : MessageFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        GreetingHelper().injectDependencies(DaggerSamplerApp.getAppContext(), this)
+        GreetingHelper(DaggerSamplerApp.getAppContext()).injectDependencies(this)
     }
 
 }

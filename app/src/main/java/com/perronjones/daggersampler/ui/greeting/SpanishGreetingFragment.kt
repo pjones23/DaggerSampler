@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.google.android.material.textview.MaterialTextView
 import com.perronjones.daggersampler.DaggerSamplerApp
 import com.perronjones.daggersampler.R
 import com.perronjones.daggersampler.di.SPANISH
@@ -28,6 +26,6 @@ class SpanishGreetingFragment : MessageFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        GreetingHelper().injectDependencies(DaggerSamplerApp.getAppContext(), this)
+        GreetingHelper(DaggerSamplerApp.getAppContext()).injectDependencies(this)
     }
 }

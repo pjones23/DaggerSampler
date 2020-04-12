@@ -1,6 +1,6 @@
 package com.perronjones.daggersampler.info.greeting
 
-import com.perronjones.daggersampler.di.GreetingScope
+import javax.inject.Singleton
 
-@GreetingScope
+@Singleton
 class GreetingDefinitionInfoProvider : BaseGreetingDefinitionInfoProvider()
